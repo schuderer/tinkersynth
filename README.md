@@ -8,7 +8,7 @@ This started out as a fun little exercise, but turned out to just not stop growi
 I found it surprisingly intuitive to use Python generators as self-contained components for this.
 
 The full documentation (including a description of all functionality) can be found in
-the directory `docs`.
+the [documentation](https://schuderer.github.io/tinkersynth/) (also in the directory `docs`).
 
 ## Quick start
 
@@ -24,7 +24,7 @@ python examples.py
 
 If no MIDI device is connected, you can use the PC keyboard as input (US layout).
 
-Look at `examples.py` to see how synth pipelines (also called "patches") can be defined and play around with
+Look at [examples.py](https://schuderer.github.io/tinkersynth/examples.html) to see how synth pipelines (also called "patches") can be defined and play around with
 them. The example code automatically restarts the synthesizer if you change the code
 to make it easier to just play around and tweak stuff.
 
@@ -37,7 +37,8 @@ can be used as parameters as well as "real" sound data (e.g. when using
 oscillators with low frequencies for controlling filter or transpose parameters, 
 cf. LFOs, modulation).
 
-For a complete list of all available nodes, see `docs` for documentation.
+For a complete list of all available nodes, see the [documentation](https://schuderer.github.io/tinkersynth/)
+or the subdirectory `docs`.
 
 ## What is a synthesizer?
 
@@ -50,7 +51,7 @@ here as a Python generator.
 
 ## What are Python generators and how are they used here?
 
-In Python, a generator is like a mixture between a function and a list. It creates
+In Python, a [generator](https://wiki.python.org/moin/Generators) is like a mixture between a function and a list. It creates
 one value after another. The nicety is that it does not create all of them at once,
 but only when e.g. a for-loop asks it for the next value. Generator code usually looks
 like an ordinary function with a loop inside. And inside the loop, they use the keyword
@@ -74,7 +75,7 @@ in Python's itertools: https://docs.python.org/3/library/itertools.html
 
 ## Could you add functionality xyz?
 
-It might already be there! Look at the documentation (under `docs`)
+It might already be there! Look at the [documentation](https://schuderer.github.io/tinkersynth/) (also in directory `docs`)
 of the `synthesizer.py` module.
 
 If it's not there, it might still be there, but in different shape. ;) As this project is meant as a playground 
