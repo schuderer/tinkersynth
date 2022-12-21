@@ -96,11 +96,13 @@ for inspiration (don't fret if there are a few functions look a bit unwieldy -- 
 If you read this far - okay, I admit, there is still a lot to do here, such as:
  - Resonance for our `low_pass_filter`
  - Porting (and understanding) that nice Moog filter code I found somewhere
- - Better, flexible, `reverb`
+ - A better flexible, `reverb`
  - Arpeggiators, which will require a refactor of our `midi_note_source`
  - Saving output to file
  - Playing a pre-determined melody
+ - Polyphony!
  - Oscilloscope!
+ - Stereo!
  - and many more
 
 Who knows, maybe you have gotten one of them to work or made something you want to show off?
