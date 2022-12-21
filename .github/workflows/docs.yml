@@ -24,10 +24,13 @@ jobs:
           python-version-file: .github/python-version.txt
 
       # ADJUST THIS: install all dependencies (including pdoc)
+      - run: sudo apt -y install libasound2-dev
       - run: pip install -r requirements-dev.txt
       # ADJUST THIS: build your documentation into docs/.
       # We use a custom build script for pdoc itself, ideally you just run `pdoc -o docs/ ...` here.
-      - run: pdoc --html  --force --output-dir docs .
+      - run: pdoc --html  --force --output-dir docs examples.py tinkersynth
+      - run: mv docs/tinkersynth/* docs
+      - run: rmdir docs/tinkersynth
 
       - uses: actions/upload-pages-artifact@v1
         with:

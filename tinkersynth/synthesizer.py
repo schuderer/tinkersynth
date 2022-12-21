@@ -1,29 +1,64 @@
-"""tinkersynth
-An amateurish library of synthesizer components/effects based on Python's generators.
+"""
+This module contains the generators/nodes for creating and manipulating wave forms and building synth patches.
+See the documentation of the individual functions below for more information, and `examples.py` for examples.
 
-A music synthesizer creates simple basic wave forms (e.g. sine, square, sawtooth)
-using oscillators and modifies these by passing them through various effect stages
-(also called "nodes"). For example, creating half a dozen or so sawtooth waves,
-slightly detuning each of them, and then mixing them together again creates a
-familiar Trance/Techno-like synthesizer sound. Each stage or node is implemented
-here as a Python generator.
+The nodes are created and chained so that the audio signal flows through them. Example::
 
-In Python, a generator is like a mixture between a function and a list. It creates
-one value after another. The nicety is that it does not create all of them at once,
-but only when e.g. a for-loop asks it for the next value. Generators usually look
-like ordinary functions with a loop inside. And inside the loop, they use 'yield'
-to deliver a value instead of 'return'.
+    # Connect to a MIDI device or the PC keyboard
+    # `freqs` is a generator/node that gives us the frequencies of the individual played notes
+    # `gates` is a generator/node providing the information whether the key is currently pressed down (and how hard)
+    freqs, gates = midi_note_source()
 
-A generator can also consume values from another generator at the same time as it
-produces its own values. That way, generators can process and manipulate data streams,
-one value after another.
+    # Create an oscillator with a sawtooth wave form, using the played frequencies
+    saw = sawtooth(freqs)
 
-Each node/generator here is rather simple and can be used and understood in
-isolation. What makes all of them powerful is the way they can be combined easily and
-in a literally infinite number of ways, creating unheard of effects and sounds.
+    # In the code until now, nothing has really happened. We just defined stuff.
+    # Now we play our pipeline:
+    play_live(saw)
 
-I would also suggest to try create your own generators. For ideas on common effects,
-look for example here: https://www.musicdsp.org/en/latest/
+As you can hear, this example generates a continuous sound, where the pitch changes when you press
+different notes. The notes actually starting and stopping is handled by an `envelope_generator`.
+In its default configuration, the envelope generator turns on and off the notes as we expect::
+
+   # Replacing the last play command with these lines:
+   env = envelope_generator(saw)  # you can also use the shorthand `eg`
+   play_live(env)  # <-- note that we changed the input from `saw` to `env`
+
+But an envelope generator can do much more. It models Attack, Decay, Sustain and Release (ADSR)
+of a played note. For details please search the Web on adsr envelopes. By varying these values,
+the sound can get very different properties -- anything between dreamy and percussive is possible.
+
+Here's a slightly more sophisticated example::
+
+    # Connect to a MIDI device or the PC keyboard
+    # `freqs` is a generator/node that gives us the frequencies of the individual played notes
+    # `gates` is a generator/node providing the information whether the key is currently pressed down (and how hard)
+    freqs, gates = midi_note_source()
+
+    # Create an oscillator with a sawtooth wave form, using the played frequencies
+    saw = sawtooth(freqs)
+
+    # Make another node which has the same frequency information, but one octave lower, and use it in
+    # a square wave oscillator
+    lower_freq = transpose(freqs, -12)  # could also have scaled by 0.5 or 2.0 for octaves: scale(freqs, 0.5)
+    squ = square(lower_freq)
+
+    # Now mix the two sounds together
+    m = mix([saw, squ])
+
+    # Using the `gates` info from the beginning, we can send our signal through an envelope generator
+    env = eg(m, gate=gates, adsr=[0.005, 0.05, 0.35, 0.3])  # Adds a slightly percussive quality
+
+    # Add some drive and reverb
+    drv = drive(env, gain=0.8, mixin=0.5)
+    rev = reverb_hall(drv)
+
+    # Before playing, scale down a bit to be safe from clipping
+    scaled = gain(rev, gain=0.8)
+
+    # In the code until now, nothing has really happened. We just defined stuff.
+    # Now we play our pipeline:
+    play_live(scaled)
 """
 
 import os
