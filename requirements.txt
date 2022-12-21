@@ -1,5 +1,6 @@
 # Tested with Python 3.9
 
+wheel
 numpy~=1.24.0
 miniaudio~=1.55
 matplotlib
