@@ -230,7 +230,7 @@ def init_midi_in(
         midi_in.set_callback(wrap_handler, data=velocity_curve)
         input_device = midi_in
     else:
-        input_device = start_keyboard_listener()
+        input_device = _start_keyboard_listener()
     return input_device
 
 
@@ -516,7 +516,7 @@ def _on_key_release(key):
         ...
 
 
-def start_keyboard_listener():
+def _start_keyboard_listener():
     print(&#34;Keybard input active&#34;)
     listener = keyboard.Listener(
         on_press=_on_key_press,
@@ -717,7 +717,7 @@ CUBIC, SQUARE_ROOT.
         midi_in.set_callback(wrap_handler, data=velocity_curve)
         input_device = midi_in
     else:
-        input_device = start_keyboard_listener()
+        input_device = _start_keyboard_listener()
     return input_device</code></pre>
 </details>
 </dd>
@@ -937,24 +937,6 @@ retrigger on legato playing, but makes portamento impossible (default False).
         prev_val = val</code></pre>
 </details>
 </dd>
-<dt id="tinkersynth.midi.start_keyboard_listener"><code class="name flex">
-<span>def <span class="ident">start_keyboard_listener</span></span>(<span>)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def start_keyboard_listener():
-    print(&#34;Keybard input active&#34;)
-    listener = keyboard.Listener(
-        on_press=_on_key_press,
-        on_release=_on_key_release)
-    listener.start()
-    return listener</code></pre>
-</details>
-</dd>
 </dl>
 </section>
 <section>
@@ -979,7 +961,6 @@ retrigger on legato playing, but makes portamento impossible (default False).
 <li><code><a title="tinkersynth.midi.make_controller" href="#tinkersynth.midi.make_controller">make_controller</a></code></li>
 <li><code><a title="tinkersynth.midi.midi_note_source" href="#tinkersynth.midi.midi_note_source">midi_note_source</a></code></li>
 <li><code><a title="tinkersynth.midi.pitch_bend_controller" href="#tinkersynth.midi.pitch_bend_controller">pitch_bend_controller</a></code></li>
-<li><code><a title="tinkersynth.midi.start_keyboard_listener" href="#tinkersynth.midi.start_keyboard_listener">start_keyboard_listener</a></code></li>
 </ul>
 </li>
 </ul>

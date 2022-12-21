@@ -198,7 +198,7 @@ def init_midi_in(
         midi_in.set_callback(wrap_handler, data=velocity_curve)
         input_device = midi_in
     else:
-        input_device = start_keyboard_listener()
+        input_device = _start_keyboard_listener()
     return input_device
 
 
@@ -484,7 +484,7 @@ def _on_key_release(key):
         ...
 
 
-def start_keyboard_listener():
+def _start_keyboard_listener():
     print("Keybard input active")
     listener = keyboard.Listener(
         on_press=_on_key_press,

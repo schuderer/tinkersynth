@@ -21,6 +21,8 @@ git clone https://github.com/schuderer/tinkersynth.git
 pip install -r requirements.txt
 python examples.py
 ```
+(If the installation of python-rtmidi fails, you might need to install some of its
+[requirements](https://github.com/SpotlightKid/python-rtmidi/blob/master/INSTALL.rst#requirements))
 
 If no MIDI device is connected, you can use the PC keyboard as input (US layout).
 
@@ -59,7 +61,8 @@ like an ordinary function with a loop inside. And inside the loop, they use the 
 
 A generator can also consume values from another generator at the same time as it
 produces its own values. That way, generators can process and manipulate data streams,
-one value after another. For a simple example, see the `gain` node in `synthesizer.py`.
+one value after another. For a simple example, see the `gain` node in 
+[synthesizer.py](https://schuderer.github.io/tinkersynth/synthesizer.html).
 It consumes a stream of samples (and gain parameters) and produces a stream of scaled
 samples.
 
@@ -91,7 +94,8 @@ such as basic arithmetic functions, scaling, constraints, if_else, or applying
 arbitrary custom functions to the signal.
 
 Of course, you can also still create your own nodes. Making a Python generator for
-signal processing is surprisingly straightforward. Look at the `synthesizer` source code
+signal processing is surprisingly straightforward. Look at the 
+[synthesizer](https://schuderer.github.io/tinkersynth/synthesizer.html) source code
 for inspiration (don't fret if there are a few functions look a bit unwieldy -- most effects aren't).
 
 If you read this far - okay, I admit, there is still a lot to do here, such as:

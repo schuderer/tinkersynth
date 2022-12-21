@@ -28,7 +28,7 @@
 <p>This started out as a fun little exercise, but turned out to just not stop growing.
 I found it surprisingly intuitive to use Python generators as self-contained components for this.</p>
 <p>The full documentation (including a description of all functionality) can be found in
-the directory <code>docs</code>.</p>
+the <a href="https://schuderer.github.io/tinkersynth/">documentation</a> (also in the directory <code>docs</code>).</p>
 <h2 id="quick-start">Quick start</h2>
 <p>Clone (or download) this repository, install the requirements,
 and, if you wish, run the example script:</p>
@@ -37,8 +37,10 @@ git clone https://github.com/schuderer/tinkersynth.git
 pip install -r requirements.txt
 python examples.py
 </code></pre>
+<p>(If the installation of python-rtmidi fails, you might need to install some of its
+<a href="https://github.com/SpotlightKid/python-rtmidi/blob/master/INSTALL.rst#requirements">requirements</a>)</p>
 <p>If no MIDI device is connected, you can use the PC keyboard as input (US layout).</p>
-<p>Look at <code>examples.py</code> to see how synth pipelines (also called "patches") can be defined and play around with
+<p>Look at <a href="https://schuderer.github.io/tinkersynth/examples.html">examples.py</a> to see how synth pipelines (also called "patches") can be defined and play around with
 them. The example code automatically restarts the synthesizer if you change the code
 to make it easier to just play around and tweak stuff.</p>
 <p>The terms <code>node</code> and <code>generator</code> are used interchangeably. The term <code>signal</code> usually refers
@@ -49,7 +51,8 @@ and output a <code>samples</code> signal). Pretty much all signals are just floa
 can be used as parameters as well as "real" sound data (e.g. when using
 oscillators with low frequencies for controlling filter or transpose parameters,
 cf. LFOs, modulation).</p>
-<p>For a complete list of all available nodes, see <code>docs</code> for documentation.</p>
+<p>For a complete list of all available nodes, see the <a href="https://schuderer.github.io/tinkersynth/">documentation</a>
+or the subdirectory <code>docs</code>.</p>
 <h2 id="what-is-a-synthesizer">What is a synthesizer?</h2>
 <p>A music synthesizer creates simple basic wave forms (e.g. sine, square, sawtooth)
 using oscillators and modifies these by passing them through various effect stages
@@ -58,14 +61,15 @@ slightly detuning each of them, and then mixing them together again creates a
 familiar Trance/Techno-like synthesizer sound. Each stage or node is implemented
 here as a Python generator.</p>
 <h2 id="what-are-python-generators-and-how-are-they-used-here">What are Python generators and how are they used here?</h2>
-<p>In Python, a generator is like a mixture between a function and a list. It creates
+<p>In Python, a <a href="https://wiki.python.org/moin/Generators">generator</a> is like a mixture between a function and a list. It creates
 one value after another. The nicety is that it does not create all of them at once,
 but only when e.g. a for-loop asks it for the next value. Generator code usually looks
 like an ordinary function with a loop inside. And inside the loop, they use the keyword
 <code>yield</code> to deliver a value instead of <code>return</code>.</p>
 <p>A generator can also consume values from another generator at the same time as it
 produces its own values. That way, generators can process and manipulate data streams,
-one value after another. For a simple example, see the <code>gain</code> node in <code>synthesizer.py</code>.
+one value after another. For a simple example, see the <code>gain</code> node in
+<a href="https://schuderer.github.io/tinkersynth/synthesizer.html">synthesizer.py</a>.
 It consumes a stream of samples (and gain parameters) and produces a stream of scaled
 samples.</p>
 <p>Each node/generator here is rather simple and can be used and understood in
@@ -76,7 +80,7 @@ look for example here: <a href="https://www.musicdsp.org/en/latest/">https://www
 <p>Some nice Python tools for common generator-related problems can be found
 in Python's itertools: <a href="https://docs.python.org/3/library/itertools.html">https://docs.python.org/3/library/itertools.html</a></p>
 <h2 id="could-you-add-functionality-xyz">Could you add functionality xyz?</h2>
-<p>It might already be there! Look at the documentation (under <code>docs</code>)
+<p>It might already be there! Look at the <a href="https://schuderer.github.io/tinkersynth/">documentation</a> (also in directory <code>docs</code>)
 of the <code>synthesizer.py</code> module.</p>
 <p>If it's not there, it might still be there, but in different shape. ;) As this project is meant as a playground
 with reusable building blocks
@@ -89,7 +93,8 @@ for your own Python experiments, you'll find that, for example:
 such as basic arithmetic functions, scaling, constraints, if_else, or applying
 arbitrary custom functions to the signal.</p>
 <p>Of course, you can also still create your own nodes. Making a Python generator for
-signal processing is surprisingly straightforward. Look at the <code><a title="tinkersynth.synthesizer" href="synthesizer.html">tinkersynth.synthesizer</a></code> source code
+signal processing is surprisingly straightforward. Look at the
+<a href="https://schuderer.github.io/tinkersynth/synthesizer.html">synthesizer</a> source code
 for inspiration (don't fret if there are a few functions look a bit unwieldy &ndash; most effects aren't).</p>
 <p>If you read this far - okay, I admit, there is still a lot to do here, such as:
 - Resonance for our <code>low_pass_filter</code>
