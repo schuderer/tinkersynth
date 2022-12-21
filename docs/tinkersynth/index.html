@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>tinkersynth API documentation</title>
+<meta name="description" content="TinkerSynth …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>tinkersynth</code></h1>
+</header>
+<section id="section-intro">
+<h1 id="tinkersynth">TinkerSynth</h1>
+<p>An amateurish library of synthesizer components/effects based on Python's <a href="https://wiki.python.org/moin/Generators">generators</a>.</p>
+<p>Supports MIDI devices and sound output (currently no stereo and no polyphony).</p>
+<p>This started out as a fun little exercise, but turned out to just not stop growing.
+I found it surprisingly intuitive to use Python generators as self-contained components for this.</p>
+<p>The full documentation (including a description of all functionality) can be found in
+the directory <code>docs</code>.</p>
+<h2 id="quick-start">Quick start</h2>
+<p>Clone (or download) this repository, install the requirements,
+and, if you wish, run the example script:</p>
+<pre><code class="language-bash">cd somewhere_where_you_keep_code
+git clone https://github.com/schuderer/tinkersynth.git
+pip install -r requirements.txt
+python examples.py
+</code></pre>
+<p>If no MIDI device is connected, you can use the PC keyboard as input (US layout).</p>
+<p>Look at <code>examples.py</code> to see how synth pipelines (also called "patches") can be defined and play around with
+them. The example code automatically restarts the synthesizer if you change the code
+to make it easier to just play around and tweak stuff.</p>
+<p>The terms <code>node</code> and <code>generator</code> are used interchangeably. The term <code>signal</code> usually refers
+to another generator's output which is processed by the current generator (sometimes also called <code>stream</code>).
+But it can in principle also be a constant value. It does not have to be sound
+(for example, <code>sine</code>/<code>square</code>/<code>sawtooth</code>/<code>triangle</code> oscillators consume a <code>frequency</code> signal
+and output a <code>samples</code> signal). Pretty much all signals are just float values and
+can be used as parameters as well as "real" sound data (e.g. when using
+oscillators with low frequencies for controlling filter or transpose parameters,
+cf. LFOs, modulation).</p>
+<p>For a complete list of all available nodes, see <code>docs</code> for documentation.</p>
+<h2 id="what-is-a-synthesizer">What is a synthesizer?</h2>
+<p>A music synthesizer creates simple basic wave forms (e.g. sine, square, sawtooth)
+using oscillators and modifies these by passing them through various effect stages
+(also called "nodes"). For example, creating half a dozen or so sawtooth waves,
+slightly detuning each of them, and then mixing them together again creates a
+familiar Trance/Techno-like synthesizer sound. Each stage or node is implemented
+here as a Python generator.</p>
+<h2 id="what-are-python-generators-and-how-are-they-used-here">What are Python generators and how are they used here?</h2>
+<p>In Python, a generator is like a mixture between a function and a list. It creates
+one value after another. The nicety is that it does not create all of them at once,
+but only when e.g. a for-loop asks it for the next value. Generator code usually looks
+like an ordinary function with a loop inside. And inside the loop, they use the keyword
+<code>yield</code> to deliver a value instead of <code>return</code>.</p>
+<p>A generator can also consume values from another generator at the same time as it
+produces its own values. That way, generators can process and manipulate data streams,
+one value after another. For a simple example, see the <code>gain</code> node in <code>synthesizer.py</code>.
+It consumes a stream of samples (and gain parameters) and produces a stream of scaled
+samples.</p>
+<p>Each node/generator here is rather simple and can be used and understood in
+isolation. What makes all of them powerful is the way they can be combined easily and
+in a literally infinite number of ways, creating unheard of effects and sounds.</p>
+<p>I also highly recommend trying to create your own generators. For ideas on common effects,
+look for example here: <a href="https://www.musicdsp.org/en/latest/">https://www.musicdsp.org/en/latest/</a></p>
+<p>Some nice Python tools for common generator-related problems can be found
+in Python's itertools: <a href="https://docs.python.org/3/library/itertools.html">https://docs.python.org/3/library/itertools.html</a></p>
+<h2 id="could-you-add-functionality-xyz">Could you add functionality xyz?</h2>
+<p>It might already be there! Look at the documentation (under <code>docs</code>)
+of the <code>synthesizer.py</code> module.</p>
+<p>If it's not there, it might still be there, but in different shape. ;) As this project is meant as a playground
+with reusable building blocks
+for your own Python experiments, you'll find that, for example:
+- LFOs (low-frequency-oscillators) are just oscillators with lower frequencies
+- AM modulation is just a <code>gain</code> node with a <code>scaled</code> oscillator as <code>gain</code> parameter (cf. vibrato)
+- FM modulation is just a <code>transpose</code> node with a <code>scaled</code> oscillator as <code>s</code> parameter
+- An envelope-driven cutoff is just an (possibly <code>scaled</code>) envelope generator output used as <code>alpha</code> parameter for <code>low_pass_filter</code></p>
+<p>There are also a lot of helper functions to help you achiev what you want,
+such as basic arithmetic functions, scaling, constraints, if_else, or applying
+arbitrary custom functions to the signal.</p>
+<p>Of course, you can also still create your own nodes. Making a Python generator for
+signal processing is surprisingly straightforward. Look at the <code><a title="tinkersynth.synthesizer" href="synthesizer.html">tinkersynth.synthesizer</a></code> source code
+for inspiration (don't fret if there are a few functions look a bit unwieldy &ndash; most effects aren't).</p>
+<p>If you read this far - okay, I admit, there is still a lot to do here, such as:
+- Resonance for our <code>low_pass_filter</code>
+- Porting (and understanding) that nice Moog filter code I found somewhere
+- Better, flexible, <code>reverb</code>
+- Arpeggiators, which will require a refactor of our <code>midi_note_source</code>
+- Saving output to file
+- Playing a pre-determined melody
+- Oscilloscope!
+- and many more</p>
+<p>Who knows, maybe you have gotten one of them to work or made something you want to show off?
+Create a GitHub issue and let us know.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+.. include:: ../README.md
+&#34;&#34;&#34;
+
+__version__ = &#34;0.0.1&#34;
+
+# Yay for namespace clutter:
+from tinkersynth.midi import *
+from tinkersynth.synthesizer import *</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="tinkersynth.midi" href="midi.html">tinkersynth.midi</a></code></dt>
+<dd>
+<div class="desc"><p>This module is needed to connect to a MIDI device …</p></div>
+</dd>
+<dt><code class="name"><a title="tinkersynth.synthesizer" href="synthesizer.html">tinkersynth.synthesizer</a></code></dt>
+<dd>
+<div class="desc"><p>tinkersynth
+An amateurish library of synthesizer components/effects based on Python's generators …</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tinkersynth.random"><code class="name flex">
+<span>def <span class="ident">random</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>random() -&gt; x in the interval [0, 1).</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#tinkersynth">TinkerSynth</a><ul>
+<li><a href="#quick-start">Quick start</a></li>
+<li><a href="#what-is-a-synthesizer">What is a synthesizer?</a></li>
+<li><a href="#what-are-python-generators-and-how-are-they-used-here">What are Python generators and how are they used here?</a></li>
+<li><a href="#could-you-add-functionality-xyz">Could you add functionality xyz?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="tinkersynth.midi" href="midi.html">tinkersynth.midi</a></code></li>
+<li><code><a title="tinkersynth.synthesizer" href="synthesizer.html">tinkersynth.synthesizer</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tinkersynth.random" href="#tinkersynth.random">random</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

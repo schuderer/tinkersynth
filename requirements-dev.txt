@@ -1,0 +1,4 @@
+-r requirements.txt
+
+# pdoc --html  --force --output-dir docs .
+pdoc3

@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>tinkersynth.midi API documentation</title>
+<meta name="description" content="This module is needed to connect to a MIDI device …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tinkersynth.midi</code></h1>
+</header>
+<section id="section-intro">
+<p>This module is needed to connect to a MIDI device.</p>
+<p>Use it to create generators (nodes) for your various MIDI inputs: note frequencies, gate signal, controllers (knobs
+and dials), etc.</p>
+<p>For examples, see <code>examples.py</code></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This module is needed to connect to a MIDI device.
+
+Use it to create generators (nodes) for your various MIDI inputs: note frequencies, gate signal, controllers (knobs
+and dials), etc.
+
+For examples, see `examples.py`
+&#34;&#34;&#34;
+
+from math import sqrt
+from threading import RLock
+from time import sleep
+from typing import Optional, Union
+
+try:
+    import rtmidi
+except ImportError:
+    rtmidi = None
+    print(&#34;Note: MIDI library `python-rtmidi` not found. Falling back to computer keyboard.&#34;)
+
+try:
+    from pynput import keyboard
+except ImportError:
+    if rtmidi is None:
+        print(&#34;Error: Neither MIDI library `python-rtmidi` nor keyboard library `pynput` found. Exiting.&#34;)
+        exit(1)
+    else:
+        keyboard = None
+
+CHANNEL_MASK = 0b00001111
+EVENT_MASK = 0b11110000
+NOTE_ON = 0b10010000
+NOTE_OFF = 0b10000000
+PITCH_BEND = 0b11100000
+PROG_CHANGE = 0b11000000  # data byte contains instruments 0-127. Drums are on 9 (10 when counting from 1)
+SET_CONTROLLER = 0b10110000  # 123 = panic
+# The most common controller numbers are the following:
+#
+# 0 = Sound bank selection (MSB)
+# 1 = Modulation wheel, often assigned to a vibrato or tremolo effect.
+# 7 = Volume level of the instrument
+# 10 = Panoramic (0 = left; 64 = center; 127 = right)
+# 11 = Expression (sometimes used also for volume control or similar, depending on the synthesizer)
+# 32 = Sound bank selection (LSB)
+# 64 = Sustain pedal (0 = no pedal; &gt;= 64 =&gt; pedal ON)
+# 121 = All controllers off (this message clears all the controller values for this channel,
+#       back to their default values)
+# 123 = All notes off (this message stops all the notes that are currently playing)
+
+# Velocity scaling variants
+NO_VELOCITY = 0
+LINEAR = 1
+SQUARED = 2
+CUBIC = 3
+SQUARE_ROOT = 4
+LOW = 0
+HIGH = 1
+
+STANDARD_PITCH = 440  # tuning of A4
+
+# Contains the currently pressed MIDI notes
+notes = {}
+
+# Last known CC values
+controller_vals = {
+    &#34;pitch_bend&#34;: 0.5,  # special case, not a &#34;real&#34; controller, hence not in mappings
+    &#34;modulation&#34;: 0.0,
+    &#34;volume&#34;: 0.5,
+    &#34;expression&#34;: 0.0,
+    &#34;sustain&#34;: 0.0,
+}
+
+# Will contain the CC value Generators to be used by synthesizer
+controllers = {}
+cc = controllers  # shorthand
+
+# Mapping from MIDI CC numbers to human-readable names
+controller_mappings = {
+    1: &#34;modulation&#34;,
+    7: &#34;volume&#34;,
+    11: &#34;expression&#34;,
+    64: &#34;sustain&#34;,
+}
+
+# Values for PC keyboard input mode
+pc_key_velocity = 0.6
+pc_key_c = 60
+pc_key_notes = {
+    &#34;a&#34;: 0,
+    &#34;w&#34;: 1,
+    &#34;s&#34;: 2,
+    &#34;e&#34;: 3,
+    &#34;d&#34;: 4,
+    &#34;f&#34;: 5,
+    &#34;t&#34;: 6,
+    &#34;g&#34;: 7,
+    &#34;y&#34;: 8,
+    &#34;h&#34;: 9,
+    &#34;u&#34;: 10,
+    &#34;j&#34;: 11,
+    &#34;k&#34;: 12,
+    &#34;o&#34;: 13,
+    &#34;l&#34;: 14,
+    &#34;p&#34;: 15,
+    &#34;;&#34;: 16,
+    &#34;&#39;&#34;: 17,
+    &#34;]&#34;: 18,
+    &#34;\\&#34;: 19,
+}
+
+# Thread control
+notes_lock = RLock()
+controllers_lock = RLock()
+stop = False
+
+
+def get_freq(midi_pitch: int):
+    &#34;&#34;&#34;
+    Calculate frequency in Hz from MIDI pitch/note number (60 = C3) with
+    relation to A4 as defined in STANDARD_PITCH.
+
+    Uses equal temperament.
+
+    :param midi_pitch: MIDI pitch/note number
+    :type midi_pitch: int
+    :return: frequency in Hz
+    :rtype: float
+    &#34;&#34;&#34;
+    factor = 2 ** ((midi_pitch - 69) / 12)
+    return STANDARD_PITCH * factor
+
+
+def init_midi_in(
+        port_or_device_name: Optional[Union[int, str]] = None,
+        rtmidi_api: int = rtmidi.API_UNSPECIFIED,
+        velocity_curve: int = SQUARE_ROOT,
+        # passing this through to the handler is a necessary evil for performance reasons
+):
+    &#34;&#34;&#34;Initializes and returns Midi input.
+    You normally should not have to use this function. To get frequency and gate generators which are already
+    hooked up to a MIDI device, please use `midi_note_source`.
+
+    If things don&#39;t work, try different ports for your device, or mash a few
+    MIDI-related buttons on your device. You might also need to specify
+    a different rtmidi_api: https://spotlightkid.github.io/python-rtmidi/rtmidi.html#low-level-apis
+
+    :param port_or_device_name: Optional integer port index or substring to find in device listing.
+      The default is to ask the user interactively.
+    :type port_or_device_name: int or str or None
+    :param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+    :type rtmidi_api: enum from rtmidi._rtmidi (int)
+    :param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+      CUBIC, SQUARE_ROOT.
+    :type velocity_curve: enum (int)
+    &#34;&#34;&#34;
+    available_ports = []
+    pc_key_port = &#34;Computer keyboard (A row: white, Q row: black, Z/X: octave, C/V: velocity)&#34;
+    port = 0
+    midi_in = None
+    if keyboard is not None:
+        available_ports = [pc_key_port]
+    if rtmidi is not None:
+        midi_in = rtmidi.MidiIn(rtapi=rtmidi_api)
+        available_ports = midi_in.get_ports() + available_ports
+    if len(available_ports) == 0:
+        print(&#34;No input devices available. Exiting.&#34;)
+        exit(2)
+    if port_or_device_name is None:
+        print(&#34;The following MIDI In ports have been found:&#34;)
+        for i, port_name in enumerate(available_ports):
+            print(f&#34; - [{i}] {port_name}&#34;)
+        port = input(&#34;Enter the number of the port you want to connect to (default: 0, Ctrl-C to abort): &#34;)
+        port = int(port) if port != &#39;&#39; else 0
+    elif isinstance(port_or_device_name, str):
+        search_hits = [port_or_device_name.lower() in n.lower() for n in available_ports]
+        for i, port_name, found in zip(range(len(search_hits)), available_ports, search_hits):
+            print(f&#34;  {&#39;--&gt;&#39; if found else &#39;   &#39;} [{i}] {port_name}&#34;)
+            port = i if found else port
+        if not any(search_hits):
+            raise ValueError(f&#34;Could not find &#39;{port_or_device_name}&#39; in any device name.&#34;)
+    else:
+        port = port_or_device_name
+    port_name = available_ports[port]
+
+    if rtmidi is not None and port_name != pc_key_port:
+        print(f&#34;Opening MIDI port [{port}]: {available_ports[port]}&#34;)
+        midi_in.open_port(port)
+
+        #    print(f&#34;init_midi: {threading.active_count(), threading.current_thread()}&#34;)
+        # Sometimes, we get a TypeError along the lines of dict/tuple/... is not callable.
+        # This is probably due to rtmidi&#39;s pyx code keeping a C pointer to the
+        # callback, and it being either cleaned up or moved by Python.
+        # Wrapping it in the same scope as the creation of MidiIn seems to fix this:
+        def wrap_handler(message, data=None):
+            #        print(f&#34;midi_callback: {threading.active_count(), threading.current_thread()}&#34;)
+            _handle_midi_message(message, data=data)
+
+        midi_in.set_callback(wrap_handler, data=velocity_curve)
+        input_device = midi_in
+    else:
+        input_device = start_keyboard_listener()
+    return input_device
+
+
+def _handle_midi_message(message, data=None):
+    &#34;&#34;&#34;Callback function to be called whenever a MIDI message is received.&#34;&#34;&#34;
+    # print(message)
+    global notes
+    velocity_curve = data
+    (event, byte1, byte2), time = message
+    # http://www.music-software-development.com/midi-tutorial.html
+    # channel = event &amp; CHANNEL_MASK
+    event_type = event &amp; EVENT_MASK
+    if event_type == NOTE_ON:
+        #        print(&#34;note on&#34;)
+        pitch = get_freq(byte1)
+        velocity = byte2 / 128
+        with notes_lock:
+            if pitch not in notes:
+                notes[pitch] = _scale_velocity(max(velocity, 0.0), velocity_curve)
+    elif event_type == NOTE_OFF:
+        #        print(&#34;note off&#34;)
+        pitch = get_freq(byte1)
+        # velocity = byte2  # ignored
+        # print(f&#34;removing {pitch} from {notes}...&#34;)
+        with notes_lock:
+            if pitch in notes:
+                del (notes[pitch])
+    # print(f&#34;new dict: {notes}&#34;)
+    elif event_type == SET_CONTROLLER:
+        controller_number = byte1
+        value = byte2
+        if controller_number == 123:
+            print(&#34;All Notes Off&#34;)
+            with notes_lock:
+                notes.clear()  # All notes off
+        elif controller_number in controller_mappings:
+            #            with controllers_lock:
+            name = controller_mappings[controller_number]
+            controller_vals[name] = value / 127
+        else:
+            print(f&#34;controller {controller_number} value {value}&#34;)
+    elif event_type == PITCH_BEND:
+        # print(&#34;pitch bend&#34;)
+        # with controllers_lock:
+        value = (byte2 &lt;&lt; 7) + byte1  # 14 bit value
+        controller_vals[&#34;pitch_bend&#34;] = 2.0 * (value - 8192) / 16384
+
+
+def midi_note_source(
+        port_or_device_name: Optional[Union[int, str]] = None,
+        rtmidi_api: int = rtmidi.API_UNSPECIFIED,
+        velocity_curve: int = SQUARE_ROOT,
+        retrigger_on_changed_note: bool = False,
+):
+    &#34;&#34;&#34;Returns a tuple of two generators (`freqs`, `gates`), where `freqs` yields
+    the frequency of the last note. `gates` yields
+    LOW (0) if no key is pressed, or a value larger than 0 containing the velocity value otherwise.
+    Does currently not support polyphony.
+    `freqs()` provides an initial frequency of 440 Hz (as set by `STANDARD_PITCH`) to avoid
+    division-by-zero issues in any downstream oscillators.
+    `gates()` is LOW initially (if the note buffer is empty).
+
+    The PC keyboard tries to emulate that of Ableton Live. If PC keyboard is selected as device,
+    the middle and upper letter row (on US layout) are the white and black keys, respectively.
+    Z/X change the octave, and C/V change the velocity.
+
+    :param port_or_device_name: Optional integer port index or substring to find in device listing.
+      The default is to ask the user interactively.
+    :type port_or_device_name: int or str or None
+    :param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+    :type rtmidi_api: enum from rtmidi._rtmidi (int)
+    :param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+      CUBIC, SQUARE_ROOT.
+    :type velocity_curve: enum (int)
+    :param retrigger_on_changed_note: Retrigger the gate if the note changes. This makes percussive AD/AR-Envelopes
+      retrigger on legato playing, but makes portamento impossible (default False).
+    :return: A tuple of two generators (`freqs`, `gates`)
+    :rtype: tuple of generators
+    &#34;&#34;&#34;
+    midi_in = None
+
+    def ensure_midi():
+        nonlocal midi_in
+        if midi_in is None:
+            with notes_lock:
+                midi_in = init_midi_in(port_or_device_name, rtmidi_api=rtmidi_api, velocity_curve=velocity_curve)
+
+    def freqs():
+        ensure_midi()
+        global stop
+        stop = False
+        freq = STANDARD_PITCH
+        while True:
+            #            print(f&#34;key_source-freqs: {threading.active_count(), threading.current_thread()}&#34;)
+            with notes_lock:
+                for n, vel in notes.items():
+                    #                    print(f&#34;found note {n}&#34;)
+                    freq = n
+            yield freq
+
+    def gates():
+        ensure_midi()
+        newest_note = -1
+        curr_velocity = -1
+        prev_note = -1
+        prev_gate = -1
+        while True:
+            #            print(f&#34;key_source-gates: {threading.active_count(), threading.current_thread()}&#34;)
+            with notes_lock:
+                curr_gate = int(len(notes) &gt; 0)
+                if curr_gate:
+                    newest_note = list(notes)[-1]
+                    curr_velocity = notes[newest_note]
+            #            if curr_gate != prev_gate:
+            if retrigger_on_changed_note and curr_gate and prev_gate and newest_note != prev_note:
+                # print(f&#34;Note has changed but gate is still HIGH. &#34;
+                #       f&#34;Setting gate to LOW momentarily to trigger it as a new note.&#34;)
+                curr_gate = LOW  # Have to disable for legato portamento to work
+            elif curr_gate != prev_gate:
+                #                print(f&#34;gate changed to {curr_gate}&#34;)
+                prev_gate = curr_gate
+            prev_note = newest_note
+            yield curr_gate * curr_velocity
+
+    # Register some standard midi controllers
+    # For more info: http://midi.teragonaudio.com/tech/midispec/ctllist.htm
+    create_controllers_from_mapping(controller_mappings, overwrite=True)
+
+    return freqs(), gates()
+
+
+def _scale_velocity(x: float, kind: int):
+    &#34;&#34;&#34;Transfer function of the linear velocity reading to scale amplitude&#34;&#34;&#34;
+    if kind == NO_VELOCITY:
+        return 1.0
+    if kind == LINEAR:
+        return x
+    if kind == SQUARED:
+        return x ** 2 * 0.75 + 0.25
+    if kind == CUBIC:
+        return x ** 3 * 0.75 + 0.25
+    if kind == SQUARE_ROOT:
+        return sqrt(x)
+
+
+def pitch_bend_controller():
+    &#34;&#34;&#34;Generator which delivers the current value of the pitch bend wheel of your MIDI device.
+
+    :return: Yields pitch-bend values between -1 and +1
+    :rtype: float
+    &#34;&#34;&#34;
+    cc_name = &#34;pitch_bend&#34;
+    prev_val = None
+    while True:
+        #        with controllers_lock:
+        val = controller_vals[cc_name]
+        if val != prev_val:
+            print(f&#34;{cc_name} = {val:2.2f}&#34;)
+        yield val
+        prev_val = val
+
+
+def make_controller(number: int, name: str, default=0.5, overwrite=False):
+    &#34;&#34;&#34;Returns a generator for the given MIDI controller number and
+    registers it under the name of the second argument.
+
+    In most cases, you might prefer to pass a dictionary of mappings to the convenience
+    function `create_controllers_from_mapping` instead of using `make_controller`.
+
+    Values will be scaled between 0 and 1.0
+    You can choose to use this to override any other default MIDI controllers
+    by using their name here. You can also use the same name several times.
+    The last controller input will always override the previous one.
+    If you don&#39;t want this behaviour, please don&#39;t register duplicates and avoid
+    the following names: volume, modulation, expression, sustain, pitch_bend.
+
+    For information on MIDI controllers, see for example http://midi.teragonaudio.com/tech/midispec/ctllist.htm
+
+    :param number: MIDI CC number
+    :type number: int
+    :param name: Human-readable name to use when using the controller from the `controllers` (or `cc`) dict.
+    :type name: str
+    :param default: Default value
+    :type default: float
+    :param overwrite: Allow overwriting existing controller numbers (default is False)
+    :type overwrite: bool
+    :return: Controller generator
+    :rtype: generator
+    &#34;&#34;&#34;
+    if not overwrite and number in controller_mappings:
+        raise ValueError(f&#34;Attempt to register controller {number} more than once (as &#39;{name}&#39;).&#34;)
+    controller_mappings[number] = name
+    controller_vals[name] = default  # what value is smart to choose?
+    prev_val = None
+
+    def gen():
+        nonlocal prev_val, name
+        while True:
+            #        with controllers_lock:
+            val = controller_vals[name]
+            if val != prev_val:
+                print(f&#34;{name} = {val:2.2f}&#34;)
+            yield val
+            prev_val = val
+
+    return gen()
+
+
+def create_controllers_from_mapping(mapping: dict, default=0.5, overwrite=False):
+    &#34;&#34;&#34;Creates generators for the given `dict` of MIDI controller numbers and names,
+    and registers them in the `midi.controllers` dict (shorthand: `midi.cc`).
+    The generators are pre-initialized and can be used like any generator, e.g.::
+
+      from midi import cc
+      co, res = cc[&#34;cutoff&#34;], cc[&#34;resonance&#34;]
+      bla = low_pass_filter(my_signal, alpha=co, resonance=res)
+      # or simply:
+      bla = low_pass_filter(my_signal, alpha=cc[&#34;cutoff&#34;], resonance=cc[&#34;resonance&#34;])
+
+    :param mapping: CC numbers and names
+    :type mapping: dict
+    :param default: Default value to use before any input is made (0.5 by default)
+    :type default: float
+    :param overwrite: Whether to overwrite existing controllers with the same name (default False).
+    :type overwrite: bool
+    :return: Dict of the created generators (no need to use it, you can use `midi.cc[&#34;my_cc_name&#34;]` instead.
+    :rtype: dict
+    &#34;&#34;&#34;
+    generators = {}
+    for num, name in mapping.items():
+        generator = make_controller(num, name, default, overwrite)
+        if name in controllers:
+            if not overwrite:
+                raise ValueError(f&#34;Controller generator with name &#39;{name}&#39; already exists.&#34;)
+            print(f&#34;Replacing previous &#39;{name}&#39; controller&#34;)
+        controllers[name] = generator
+        generators[name] = generator
+        print(f&#34;Generator for MIDI controller number {num} ({name}) available as midi.cc[&#39;{name}&#39;]&#34;)
+    return generators
+
+
+# Keyboard fallback
+def _on_key_press(key):
+    global pc_key_c, notes, pc_key_velocity
+    try:
+        #        print(&#39;alphanumeric key {0} pressed&#39;.format(key.char))
+        if key.char in pc_key_notes:
+            #            print(&#34;note on&#34;)
+            pitch = get_freq(pc_key_c + pc_key_notes[key.char])
+            velocity = pc_key_velocity
+            with notes_lock:
+                if pitch not in notes:
+                    notes[pitch] = velocity
+        elif key.char == &#34;z&#34;:
+            pc_key_c = max(pc_key_c - 12, 0)
+            print(f&#34;Keyboard now spans MIDI notes {pc_key_c} to {pc_key_c + 12} (60 is C3)&#34;)
+        elif key.char == &#34;x&#34;:
+            pc_key_c = min(pc_key_c + 12, 108)
+            print(f&#34;Keyboard now spans MIDI notes {pc_key_c} to {pc_key_c + 12} (60 is C3)&#34;)
+        elif key.char == &#34;c&#34;:
+            pc_key_velocity = max(pc_key_velocity - 0.1, 0.1)
+            print(f&#34;You are playing with velocity {pc_key_velocity}&#34;)
+        elif key.char == &#34;v&#34;:
+            pc_key_velocity = min(pc_key_velocity + 0.1, 1.0)
+            print(f&#34;You are playing with velocity {pc_key_velocity}&#34;)
+    except AttributeError:
+        #        print(&#39;special key {0} pressed&#39;.format(key))
+        ...
+
+
+def _on_key_release(key):
+    global pc_key_c, notes
+    #    print(&#39;{0} released&#39;.format(key))
+    try:
+        if key.char in pc_key_notes:
+            pitch = get_freq(pc_key_c + pc_key_notes[key.char])
+            #            print(&#34;note off&#34;)
+            # print(f&#34;removing {pitch} from {notes}...&#34;)
+            with notes_lock:
+                if pitch in notes:
+                    del (notes[pitch])
+    except AttributeError:
+        ...
+
+
+def start_keyboard_listener():
+    print(&#34;Keybard input active&#34;)
+    listener = keyboard.Listener(
+        on_press=_on_key_press,
+        on_release=_on_key_release)
+    listener.start()
+    return listener
+
+
+if __name__ == &#34;__main__&#34;:
+    print(&#34;Test mode. Select your MIDI device, then press some keys to see whether it works.&#34;)
+    for f, g in midi_note_source():
+        print(f&#34;freq: {f}, gate: {g}&#34;)
+        sleep(1)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tinkersynth.midi.create_controllers_from_mapping"><code class="name flex">
+<span>def <span class="ident">create_controllers_from_mapping</span></span>(<span>mapping: dict, default=0.5, overwrite=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates generators for the given <code>dict</code> of MIDI controller numbers and names,
+and registers them in the <code>midi.controllers</code> dict (shorthand: <code>midi.cc</code>).
+The generators are pre-initialized and can be used like any generator, e.g.::</p>
+<p>from midi import cc
+co, res = cc["cutoff"], cc["resonance"]
+bla = low_pass_filter(my_signal, alpha=co, resonance=res)
+# or simply:
+bla = low_pass_filter(my_signal, alpha=cc["cutoff"], resonance=cc["resonance"])</p>
+<p>:param mapping: CC numbers and names
+:type mapping: dict
+:param default: Default value to use before any input is made (0.5 by default)
+:type default: float
+:param overwrite: Whether to overwrite existing controllers with the same name (default False).
+:type overwrite: bool
+:return: Dict of the created generators (no need to use it, you can use <code>midi.cc["my_cc_name"]</code> instead.
+:rtype: dict</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_controllers_from_mapping(mapping: dict, default=0.5, overwrite=False):
+    &#34;&#34;&#34;Creates generators for the given `dict` of MIDI controller numbers and names,
+    and registers them in the `midi.controllers` dict (shorthand: `midi.cc`).
+    The generators are pre-initialized and can be used like any generator, e.g.::
+
+      from midi import cc
+      co, res = cc[&#34;cutoff&#34;], cc[&#34;resonance&#34;]
+      bla = low_pass_filter(my_signal, alpha=co, resonance=res)
+      # or simply:
+      bla = low_pass_filter(my_signal, alpha=cc[&#34;cutoff&#34;], resonance=cc[&#34;resonance&#34;])
+
+    :param mapping: CC numbers and names
+    :type mapping: dict
+    :param default: Default value to use before any input is made (0.5 by default)
+    :type default: float
+    :param overwrite: Whether to overwrite existing controllers with the same name (default False).
+    :type overwrite: bool
+    :return: Dict of the created generators (no need to use it, you can use `midi.cc[&#34;my_cc_name&#34;]` instead.
+    :rtype: dict
+    &#34;&#34;&#34;
+    generators = {}
+    for num, name in mapping.items():
+        generator = make_controller(num, name, default, overwrite)
+        if name in controllers:
+            if not overwrite:
+                raise ValueError(f&#34;Controller generator with name &#39;{name}&#39; already exists.&#34;)
+            print(f&#34;Replacing previous &#39;{name}&#39; controller&#34;)
+        controllers[name] = generator
+        generators[name] = generator
+        print(f&#34;Generator for MIDI controller number {num} ({name}) available as midi.cc[&#39;{name}&#39;]&#34;)
+    return generators</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.get_freq"><code class="name flex">
+<span>def <span class="ident">get_freq</span></span>(<span>midi_pitch: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate frequency in Hz from MIDI pitch/note number (60 = C3) with
+relation to A4 as defined in STANDARD_PITCH.</p>
+<p>Uses equal temperament.</p>
+<p>:param midi_pitch: MIDI pitch/note number
+:type midi_pitch: int
+:return: frequency in Hz
+:rtype: float</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_freq(midi_pitch: int):
+    &#34;&#34;&#34;
+    Calculate frequency in Hz from MIDI pitch/note number (60 = C3) with
+    relation to A4 as defined in STANDARD_PITCH.
+
+    Uses equal temperament.
+
+    :param midi_pitch: MIDI pitch/note number
+    :type midi_pitch: int
+    :return: frequency in Hz
+    :rtype: float
+    &#34;&#34;&#34;
+    factor = 2 ** ((midi_pitch - 69) / 12)
+    return STANDARD_PITCH * factor</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.init_midi_in"><code class="name flex">
+<span>def <span class="ident">init_midi_in</span></span>(<span>port_or_device_name: Union[int, str, ForwardRef(None)] = None, rtmidi_api: int = 0, velocity_curve: int = 4)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initializes and returns Midi input.
+You normally should not have to use this function. To get frequency and gate generators which are already
+hooked up to a MIDI device, please use <code><a title="tinkersynth.midi.midi_note_source" href="#tinkersynth.midi.midi_note_source">midi_note_source()</a></code>.</p>
+<p>If things don't work, try different ports for your device, or mash a few
+MIDI-related buttons on your device. You might also need to specify
+a different rtmidi_api: <a href="https://spotlightkid.github.io/python-rtmidi/rtmidi.html#low-level-apis">https://spotlightkid.github.io/python-rtmidi/rtmidi.html#low-level-apis</a></p>
+<p>:param port_or_device_name: Optional integer port index or substring to find in device listing.
+The default is to ask the user interactively.
+:type port_or_device_name: int or str or None
+:param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+:type rtmidi_api: enum from rtmidi._rtmidi (int)
+:param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+CUBIC, SQUARE_ROOT.
+:type velocity_curve: enum (int)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_midi_in(
+        port_or_device_name: Optional[Union[int, str]] = None,
+        rtmidi_api: int = rtmidi.API_UNSPECIFIED,
+        velocity_curve: int = SQUARE_ROOT,
+        # passing this through to the handler is a necessary evil for performance reasons
+):
+    &#34;&#34;&#34;Initializes and returns Midi input.
+    You normally should not have to use this function. To get frequency and gate generators which are already
+    hooked up to a MIDI device, please use `midi_note_source`.
+
+    If things don&#39;t work, try different ports for your device, or mash a few
+    MIDI-related buttons on your device. You might also need to specify
+    a different rtmidi_api: https://spotlightkid.github.io/python-rtmidi/rtmidi.html#low-level-apis
+
+    :param port_or_device_name: Optional integer port index or substring to find in device listing.
+      The default is to ask the user interactively.
+    :type port_or_device_name: int or str or None
+    :param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+    :type rtmidi_api: enum from rtmidi._rtmidi (int)
+    :param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+      CUBIC, SQUARE_ROOT.
+    :type velocity_curve: enum (int)
+    &#34;&#34;&#34;
+    available_ports = []
+    pc_key_port = &#34;Computer keyboard (A row: white, Q row: black, Z/X: octave, C/V: velocity)&#34;
+    port = 0
+    midi_in = None
+    if keyboard is not None:
+        available_ports = [pc_key_port]
+    if rtmidi is not None:
+        midi_in = rtmidi.MidiIn(rtapi=rtmidi_api)
+        available_ports = midi_in.get_ports() + available_ports
+    if len(available_ports) == 0:
+        print(&#34;No input devices available. Exiting.&#34;)
+        exit(2)
+    if port_or_device_name is None:
+        print(&#34;The following MIDI In ports have been found:&#34;)
+        for i, port_name in enumerate(available_ports):
+            print(f&#34; - [{i}] {port_name}&#34;)
+        port = input(&#34;Enter the number of the port you want to connect to (default: 0, Ctrl-C to abort): &#34;)
+        port = int(port) if port != &#39;&#39; else 0
+    elif isinstance(port_or_device_name, str):
+        search_hits = [port_or_device_name.lower() in n.lower() for n in available_ports]
+        for i, port_name, found in zip(range(len(search_hits)), available_ports, search_hits):
+            print(f&#34;  {&#39;--&gt;&#39; if found else &#39;   &#39;} [{i}] {port_name}&#34;)
+            port = i if found else port
+        if not any(search_hits):
+            raise ValueError(f&#34;Could not find &#39;{port_or_device_name}&#39; in any device name.&#34;)
+    else:
+        port = port_or_device_name
+    port_name = available_ports[port]
+
+    if rtmidi is not None and port_name != pc_key_port:
+        print(f&#34;Opening MIDI port [{port}]: {available_ports[port]}&#34;)
+        midi_in.open_port(port)
+
+        #    print(f&#34;init_midi: {threading.active_count(), threading.current_thread()}&#34;)
+        # Sometimes, we get a TypeError along the lines of dict/tuple/... is not callable.
+        # This is probably due to rtmidi&#39;s pyx code keeping a C pointer to the
+        # callback, and it being either cleaned up or moved by Python.
+        # Wrapping it in the same scope as the creation of MidiIn seems to fix this:
+        def wrap_handler(message, data=None):
+            #        print(f&#34;midi_callback: {threading.active_count(), threading.current_thread()}&#34;)
+            _handle_midi_message(message, data=data)
+
+        midi_in.set_callback(wrap_handler, data=velocity_curve)
+        input_device = midi_in
+    else:
+        input_device = start_keyboard_listener()
+    return input_device</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.make_controller"><code class="name flex">
+<span>def <span class="ident">make_controller</span></span>(<span>number: int, name: str, default=0.5, overwrite=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a generator for the given MIDI controller number and
+registers it under the name of the second argument.</p>
+<p>In most cases, you might prefer to pass a dictionary of mappings to the convenience
+function <code><a title="tinkersynth.midi.create_controllers_from_mapping" href="#tinkersynth.midi.create_controllers_from_mapping">create_controllers_from_mapping()</a></code> instead of using <code><a title="tinkersynth.midi.make_controller" href="#tinkersynth.midi.make_controller">make_controller()</a></code>.</p>
+<p>Values will be scaled between 0 and 1.0
+You can choose to use this to override any other default MIDI controllers
+by using their name here. You can also use the same name several times.
+The last controller input will always override the previous one.
+If you don't want this behaviour, please don't register duplicates and avoid
+the following names: volume, modulation, expression, sustain, pitch_bend.</p>
+<p>For information on MIDI controllers, see for example <a href="http://midi.teragonaudio.com/tech/midispec/ctllist.htm">http://midi.teragonaudio.com/tech/midispec/ctllist.htm</a></p>
+<p>:param number: MIDI CC number
+:type number: int
+:param name: Human-readable name to use when using the controller from the <code>controllers</code> (or <code>cc</code>) dict.
+:type name: str
+:param default: Default value
+:type default: float
+:param overwrite: Allow overwriting existing controller numbers (default is False)
+:type overwrite: bool
+:return: Controller generator
+:rtype: generator</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_controller(number: int, name: str, default=0.5, overwrite=False):
+    &#34;&#34;&#34;Returns a generator for the given MIDI controller number and
+    registers it under the name of the second argument.
+
+    In most cases, you might prefer to pass a dictionary of mappings to the convenience
+    function `create_controllers_from_mapping` instead of using `make_controller`.
+
+    Values will be scaled between 0 and 1.0
+    You can choose to use this to override any other default MIDI controllers
+    by using their name here. You can also use the same name several times.
+    The last controller input will always override the previous one.
+    If you don&#39;t want this behaviour, please don&#39;t register duplicates and avoid
+    the following names: volume, modulation, expression, sustain, pitch_bend.
+
+    For information on MIDI controllers, see for example http://midi.teragonaudio.com/tech/midispec/ctllist.htm
+
+    :param number: MIDI CC number
+    :type number: int
+    :param name: Human-readable name to use when using the controller from the `controllers` (or `cc`) dict.
+    :type name: str
+    :param default: Default value
+    :type default: float
+    :param overwrite: Allow overwriting existing controller numbers (default is False)
+    :type overwrite: bool
+    :return: Controller generator
+    :rtype: generator
+    &#34;&#34;&#34;
+    if not overwrite and number in controller_mappings:
+        raise ValueError(f&#34;Attempt to register controller {number} more than once (as &#39;{name}&#39;).&#34;)
+    controller_mappings[number] = name
+    controller_vals[name] = default  # what value is smart to choose?
+    prev_val = None
+
+    def gen():
+        nonlocal prev_val, name
+        while True:
+            #        with controllers_lock:
+            val = controller_vals[name]
+            if val != prev_val:
+                print(f&#34;{name} = {val:2.2f}&#34;)
+            yield val
+            prev_val = val
+
+    return gen()</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.midi_note_source"><code class="name flex">
+<span>def <span class="ident">midi_note_source</span></span>(<span>port_or_device_name: Union[int, str, ForwardRef(None)] = None, rtmidi_api: int = 0, velocity_curve: int = 4, retrigger_on_changed_note: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a tuple of two generators (<code>freqs</code>, <code>gates</code>), where <code>freqs</code> yields
+the frequency of the last note. <code>gates</code> yields
+LOW (0) if no key is pressed, or a value larger than 0 containing the velocity value otherwise.
+Does currently not support polyphony.
+<code>freqs()</code> provides an initial frequency of 440 Hz (as set by <code>STANDARD_PITCH</code>) to avoid
+division-by-zero issues in any downstream oscillators.
+<code>gates()</code> is LOW initially (if the note buffer is empty).</p>
+<p>The PC keyboard tries to emulate that of Ableton Live. If PC keyboard is selected as device,
+the middle and upper letter row (on US layout) are the white and black keys, respectively.
+Z/X change the octave, and C/V change the velocity.</p>
+<p>:param port_or_device_name: Optional integer port index or substring to find in device listing.
+The default is to ask the user interactively.
+:type port_or_device_name: int or str or None
+:param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+:type rtmidi_api: enum from rtmidi._rtmidi (int)
+:param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+CUBIC, SQUARE_ROOT.
+:type velocity_curve: enum (int)
+:param retrigger_on_changed_note: Retrigger the gate if the note changes. This makes percussive AD/AR-Envelopes
+retrigger on legato playing, but makes portamento impossible (default False).
+:return: A tuple of two generators (<code>freqs</code>, <code>gates</code>)
+:rtype: tuple of generators</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def midi_note_source(
+        port_or_device_name: Optional[Union[int, str]] = None,
+        rtmidi_api: int = rtmidi.API_UNSPECIFIED,
+        velocity_curve: int = SQUARE_ROOT,
+        retrigger_on_changed_note: bool = False,
+):
+    &#34;&#34;&#34;Returns a tuple of two generators (`freqs`, `gates`), where `freqs` yields
+    the frequency of the last note. `gates` yields
+    LOW (0) if no key is pressed, or a value larger than 0 containing the velocity value otherwise.
+    Does currently not support polyphony.
+    `freqs()` provides an initial frequency of 440 Hz (as set by `STANDARD_PITCH`) to avoid
+    division-by-zero issues in any downstream oscillators.
+    `gates()` is LOW initially (if the note buffer is empty).
+
+    The PC keyboard tries to emulate that of Ableton Live. If PC keyboard is selected as device,
+    the middle and upper letter row (on US layout) are the white and black keys, respectively.
+    Z/X change the octave, and C/V change the velocity.
+
+    :param port_or_device_name: Optional integer port index or substring to find in device listing.
+      The default is to ask the user interactively.
+    :type port_or_device_name: int or str or None
+    :param rtmidi_api: Optional rtmidi low-level API choice (default should work in most cases)
+    :type rtmidi_api: enum from rtmidi._rtmidi (int)
+    :param velocity_curve: Velocity curve to use (default midi.SQUARE_ROOT). One of NO_VELOCITY, LINEAR, SQUARED,
+      CUBIC, SQUARE_ROOT.
+    :type velocity_curve: enum (int)
+    :param retrigger_on_changed_note: Retrigger the gate if the note changes. This makes percussive AD/AR-Envelopes
+      retrigger on legato playing, but makes portamento impossible (default False).
+    :return: A tuple of two generators (`freqs`, `gates`)
+    :rtype: tuple of generators
+    &#34;&#34;&#34;
+    midi_in = None
+
+    def ensure_midi():
+        nonlocal midi_in
+        if midi_in is None:
+            with notes_lock:
+                midi_in = init_midi_in(port_or_device_name, rtmidi_api=rtmidi_api, velocity_curve=velocity_curve)
+
+    def freqs():
+        ensure_midi()
+        global stop
+        stop = False
+        freq = STANDARD_PITCH
+        while True:
+            #            print(f&#34;key_source-freqs: {threading.active_count(), threading.current_thread()}&#34;)
+            with notes_lock:
+                for n, vel in notes.items():
+                    #                    print(f&#34;found note {n}&#34;)
+                    freq = n
+            yield freq
+
+    def gates():
+        ensure_midi()
+        newest_note = -1
+        curr_velocity = -1
+        prev_note = -1
+        prev_gate = -1
+        while True:
+            #            print(f&#34;key_source-gates: {threading.active_count(), threading.current_thread()}&#34;)
+            with notes_lock:
+                curr_gate = int(len(notes) &gt; 0)
+                if curr_gate:
+                    newest_note = list(notes)[-1]
+                    curr_velocity = notes[newest_note]
+            #            if curr_gate != prev_gate:
+            if retrigger_on_changed_note and curr_gate and prev_gate and newest_note != prev_note:
+                # print(f&#34;Note has changed but gate is still HIGH. &#34;
+                #       f&#34;Setting gate to LOW momentarily to trigger it as a new note.&#34;)
+                curr_gate = LOW  # Have to disable for legato portamento to work
+            elif curr_gate != prev_gate:
+                #                print(f&#34;gate changed to {curr_gate}&#34;)
+                prev_gate = curr_gate
+            prev_note = newest_note
+            yield curr_gate * curr_velocity
+
+    # Register some standard midi controllers
+    # For more info: http://midi.teragonaudio.com/tech/midispec/ctllist.htm
+    create_controllers_from_mapping(controller_mappings, overwrite=True)
+
+    return freqs(), gates()</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.pitch_bend_controller"><code class="name flex">
+<span>def <span class="ident">pitch_bend_controller</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generator which delivers the current value of the pitch bend wheel of your MIDI device.</p>
+<p>:return: Yields pitch-bend values between -1 and +1
+:rtype: float</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pitch_bend_controller():
+    &#34;&#34;&#34;Generator which delivers the current value of the pitch bend wheel of your MIDI device.
+
+    :return: Yields pitch-bend values between -1 and +1
+    :rtype: float
+    &#34;&#34;&#34;
+    cc_name = &#34;pitch_bend&#34;
+    prev_val = None
+    while True:
+        #        with controllers_lock:
+        val = controller_vals[cc_name]
+        if val != prev_val:
+            print(f&#34;{cc_name} = {val:2.2f}&#34;)
+        yield val
+        prev_val = val</code></pre>
+</details>
+</dd>
+<dt id="tinkersynth.midi.start_keyboard_listener"><code class="name flex">
+<span>def <span class="ident">start_keyboard_listener</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_keyboard_listener():
+    print(&#34;Keybard input active&#34;)
+    listener = keyboard.Listener(
+        on_press=_on_key_press,
+        on_release=_on_key_release)
+    listener.start()
+    return listener</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tinkersynth" href="index.html">tinkersynth</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tinkersynth.midi.create_controllers_from_mapping" href="#tinkersynth.midi.create_controllers_from_mapping">create_controllers_from_mapping</a></code></li>
+<li><code><a title="tinkersynth.midi.get_freq" href="#tinkersynth.midi.get_freq">get_freq</a></code></li>
+<li><code><a title="tinkersynth.midi.init_midi_in" href="#tinkersynth.midi.init_midi_in">init_midi_in</a></code></li>
+<li><code><a title="tinkersynth.midi.make_controller" href="#tinkersynth.midi.make_controller">make_controller</a></code></li>
+<li><code><a title="tinkersynth.midi.midi_note_source" href="#tinkersynth.midi.midi_note_source">midi_note_source</a></code></li>
+<li><code><a title="tinkersynth.midi.pitch_bend_controller" href="#tinkersynth.midi.pitch_bend_controller">pitch_bend_controller</a></code></li>
+<li><code><a title="tinkersynth.midi.start_keyboard_listener" href="#tinkersynth.midi.start_keyboard_listener">start_keyboard_listener</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
